@@ -4,7 +4,7 @@ const { dropCollection } = require('./db');
 
 describe.only('Gear E2E API', () => {
 
-    before(() => dropCollection('gear'));
+    before(() => dropCollection('gears'));
 
     let r1 = {
         name: 'R1',
@@ -48,6 +48,13 @@ describe.only('Gear E2E API', () => {
         return request.get('/api/gear')
             .then(({ body }) => {
                 assert.deepEqual(body, [r1, lonePeak]);
+            });
+    });
+
+    it('gets a piece of gear by id', () => {
+        return request.get(`/api/gear/${r1._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, r1);
             });
     });
 
