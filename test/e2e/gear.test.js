@@ -62,6 +62,7 @@ describe.only('Gear E2E API', () => {
         lonePeak.name = 'Lone Peak 3.5';
         
         return request.put(`/api/gear/${lonePeak._id}`)
+            .body(lonePeak)
             .then(({ body }) => {
                 assert.deepEqual(body, lonePeak);
             });
