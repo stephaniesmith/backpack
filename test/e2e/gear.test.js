@@ -58,13 +58,23 @@ describe.only('Gear E2E API', () => {
             });
     });
 
-    it('updates an event by id', () => {
+    it('updates a piece of gear by id', () => {
         lonePeak.name = 'Lone Peak 3.5';
         
         return request.put(`/api/gear/${lonePeak._id}`)
             .send(lonePeak)
             .then(({ body }) => {
                 assert.deepEqual(body, lonePeak);
+            });
+    });
+
+    it('deletes a piece of gear by id', () => {
+        return request.delete(`/api/gear/${lonePeak._id}`)
+            .then(() => {
+                return request.get(`/api/gear/${lonePeak._id}`);
+            })
+            .then(res => {
+                assert.strictEqual(res.status, 404);
             });
     });
 
