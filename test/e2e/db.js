@@ -2,7 +2,7 @@ const connect = require('../../lib/util/connect');
 const mongoose = require('mongoose');
 
 
-before(() => connect('mongodb://localhost:27017/back-test'));    
+before(() => connect('mongodb://localhost:27017/backpack-test'));    
 after(() => mongoose.connection.close());
 
 module.exports = {
