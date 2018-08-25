@@ -28,4 +28,30 @@ describe('Gear model', () => {
         assert.equal(errors.weight.kind, 'required');
     });
 
+    it('type must be enum', () => {
+        const gear = new Gear({
+            name: 'Lone Peak 3.5',
+            brand: 'Altra',
+            type: 'bad',
+            weight: 8.7
+        });
+
+        const errors = getErrors(gear.validateSync(), 1);
+        assert.equal(errors.type.kind, 'enum');
+
+    });
+
+    it('wight must be a positive number', () => {
+        const gear = new Gear({
+            name: 'Lone Peak 3.5',
+            brand: 'Altra',
+            type: 'footwear',
+            weight: 0
+        });
+
+        const errors = getErrors(gear.validateSync(), 1);
+        assert.equal(errors.weight.kind, 'min');
+
+    });
+
 });
