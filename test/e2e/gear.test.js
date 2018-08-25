@@ -6,12 +6,27 @@ describe.only('Gear E2E API', () => {
 
     before(() => dropCollection('gear'));
 
+    let r1 = {
+        name: 'R1',
+        brand: 'Patagonia',
+        type: 'clothes',
+        weight: 9.87
+    };
+
     let lonePeak = {
         name: 'Lone Peak 3.5',
         brand: 'Altra',
         type: 'footwear',
         weight: 8.7
     };
+
+    before(() => {
+        return request.post('/api/gear')
+            .send(r1)
+            .then(({ body }) => {
+                r1 = body;
+            });
+    });
 
     it('posts gear', () => {
         return request.post('/api/gear')
@@ -28,4 +43,12 @@ describe.only('Gear E2E API', () => {
                 lonePeak = body;
             });
     });
+
+    it('gets all gear', () => {
+        return request.get('/api/gear')
+            .then(({ body }) => {
+                assert.deepEqual(body, [r1, lonePeak]);
+            });
+    });
+
 });
