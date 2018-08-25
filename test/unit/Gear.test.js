@@ -1,5 +1,4 @@
 const { assert } = require('chai');
-const { Types } = require('mongoose');
 const { getErrors } = require('./helpers');
 const Gear = require('../../lib/models/Gear');
 
