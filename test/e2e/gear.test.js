@@ -14,7 +14,7 @@ describe.only('Gear E2E API', () => {
     };
 
     let lonePeak = {
-        name: 'Lone Peak 3.5',
+        name: 'Lone Peak 3.0',
         brand: 'Altra',
         type: 'footwear',
         weight: 8.7
@@ -55,6 +55,15 @@ describe.only('Gear E2E API', () => {
         return request.get(`/api/gear/${r1._id}`)
             .then(({ body }) => {
                 assert.deepEqual(body, r1);
+            });
+    });
+
+    it('updates an event by id', () => {
+        lonePeak.name = 'Lone Peak 3.5';
+        
+        return request.put(`/api/gear/${lonePeak._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, lonePeak);
             });
     });
 
