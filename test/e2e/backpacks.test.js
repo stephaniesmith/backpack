@@ -47,7 +47,7 @@ describe.only('Gear E2E API', () => {
     });
 
     it('posts a backpack', () => {
-        return request.post('/api/backpack')
+        return request.post('/api/backpacks')
             .send(backpack)
             .then(({ body }) => {
                 const { _id, __v } = body;
