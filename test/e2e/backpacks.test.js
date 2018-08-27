@@ -14,6 +14,13 @@ describe.only('Gear E2E API', () => {
         weight: 4.1
     };
 
+    let kumo = {
+        name: 'Kumo 36',
+        brand: 'Gossamer Gear',
+        type: 'backpack',
+        weight: 18.5
+    };
+
     let r1 = {
         name: 'R1',
         brand: 'Patagonia',
@@ -23,6 +30,12 @@ describe.only('Gear E2E API', () => {
 
     let backpack = {
         name: 'Weekend Backpack Setup',
+        backpack: '',
+        gear: []
+    };
+
+    let lightWeight = {
+        name: 'Light Weight Setup',
         backpack: '',
         gear: []
     };
@@ -43,6 +56,24 @@ describe.only('Gear E2E API', () => {
             .then(({ body }) => {
                 r1 = body;
                 backpack.gear.push(r1._id);
+                lightWeight.gear.push(r1._id);
+            });
+    });
+
+    before(() => {
+        return request.post('/api/gear')
+            .send(kumo)
+            .then(({ body }) => {
+                kumo = body;
+                lightWeight.backpack = kumo._id;
+            });
+    });
+
+    before(() => {
+        return request.post('/api/backpacks')
+            .send(lightWeight)
+            .then(({ body }) => {
+                lightWeight = body;
             });
     });
 
@@ -58,8 +89,16 @@ describe.only('Gear E2E API', () => {
                     _id,
                     __v
                 });
-                // backpack = body;
+                backpack = body;
             });
     });
+
+    it('gets all backpacks', () => {
+        return request.get('/api/backpacks')
+            .then(({ body }) => {
+                assert.deepEqual(body, [lightWeight, backpack]);
+            });
+    });
+
 
 });
