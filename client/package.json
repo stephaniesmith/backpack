@@ -8,7 +8,7 @@
     "pretest": "npm run lint",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "copy": "rm -rf ../backpack-server/public && cp -R ./docs ../backpack-server/public",
+    "copy": "rm -rf ../server/public && cp -R ./docs ../server/public",
     "build:prod": "npm run build && npm run copy",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --hot --mode development"
