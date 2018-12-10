@@ -1,47 +1,34 @@
 {
-  "name": "backpack-server",
+  "name": "backpack",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
+  "main": "index.js",
+  "dependencies": {
+    "morgan": "^1.9.1"
   },
+  "devDependencies": {},
   "scripts": {
-    "lint": "eslint lib test",
-    "pretest": "npm run lint",
-    "test:mocha": "mocha  --recursive",
-    "test": "npm run test:mocha",
-    "test:unit": "mocha test/unit",
-    "test:e2e": "mocha test/e2e",
-    "test:watch": "nodemon --exec npm run test:mocha",
-    "test:e2e:watch": "nodemon --exec npm run test:e2e",
-    "test:unit:watch": "nodemon --exec npm run test:unit",
-    "start": "node server.js",
-    "start:watch": "nodemon server.js"
+    "preinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm i",
+    "install:server": "cd server && npm i",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm run test",
+    "test:server": "cd server && npm run test",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "prestart": "npm run build",
+    "start": "cd server && npm start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stephaniesmith/backpack.git"
   },
   "keywords": [],
-  "author": "Stephanie Smith",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/stephaniesmith/backpack/issues"
   },
-  "homepage": "https://github.com/stephaniesmith/backpack#readme",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
-    "eslint": "^4.19.1",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.17.3"
-  },
-  "dependencies": {
-    "dotenv": "^5.0.1",
-    "express": "^4.16.3",
-    "mongoose": "^5.0.16",
-    "morgan": "^1.9.1"
-  }
+  "homepage": "https://github.com/stephaniesmith/backpack#readme"
 }
