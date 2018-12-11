@@ -15,7 +15,7 @@
     "test:client": "cd client && npm run test",
     "test:server": "cd server && npm run test",
     "build": "npm run build:client",
-    "build:client": "cd client && npm run build:prod",
+    "build:client": "cd client && npm run build",
     "prestart": "npm run build",
     "start": "cd server && npm start"
   },

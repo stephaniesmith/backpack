@@ -6,7 +6,7 @@ require('./models/register-plugins');
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static('./public'));
+app.use(express.static('../client/dist'));
 
 const gear = require('./routes/gear');
 const backpacks = require('./routes/backpacks');
