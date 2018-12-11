@@ -1,7 +1,11 @@
-
 language: node_js
 node_js: '10'
 services: mongodb
 env:
   matrix:
   - MONGODB_URI=mongodb://localhost:27017/backpack_test
+deploy:
+  provider: heroku
+  app: alchemy-backpack
+  api_key:
+    secure: ZKogMSM7UPTXZAi14UzN5pXKbCR3x/ibqLa0/OwGHKu4Y7wikM2KLmkqkGFmRDyELSMxz8C4Dx60njJvcihJSfnSeXy2vzs3SCvIOTIQzou7YCqA+BLgjG292iCBfE2Ftoxt03p14psBkMOLpGFOgOCFvv15fQZ0yMVK9NcI7YX2sn6TMbGhmrETsT2DABixvHm4ZRnLJmR9GPwRJsJl+fjUuMJMY1jSQcexk6doNLGjpf0iN+iQTR2mdQuTp8ZDF5v/4Mrc0FA5ekGnFegU7/5dh0LBNOiDjoTqmqUadUys+pAmkUtTNxNZ5hGqfnOpV7qNYbsbGA8vIQJGOuNWRZ0TmAA81fY4adX3xbd/e+d8LBPb8tYMDztW5RpIb6Tq05MteFBBX512mVhCUNKQWeSRqLPgyqfNbZBBrp1f1W0wHMN2ypxE9hzbAUA+svpmR/QDotGFb5Od3mjP6Ztqh2c9Sbvh6WjX/vP09Jvajj29+PIype290e9lq5s0xmputEbWpewsMUru5plxRMItwShr20hlC+n5qfb5IXZB/LO6f7jFzMEVAHamxpHmpVZgEGJfvnFo4werl/puPh4FVdN2MIkm5rWZl01xphqY+AEYtgXgPayIXJP2zzeUS2uA+puGV7bf17/lvuL9UOGAp9oMCWCFRu947zUrs1y8SKQ=
