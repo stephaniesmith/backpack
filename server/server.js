@@ -1,11 +1,12 @@
 /* eslint no-console: off */
 const http = require('http');
-const app = require('./lib/app');
-const connect = require('./lib/util/connect');
+const app = require('../lib/app');
+require('dotenv').config();
+const connect = require('../lib/util/connect');
 
 const PORT = process.env.PORT || 3000;
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/backpack';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 connect(MONGODB_URI);
 

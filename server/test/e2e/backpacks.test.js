@@ -96,7 +96,43 @@ describe.only('Gear E2E API', () => {
     it('gets all backpacks', () => {
         return request.get('/api/backpacks')
             .then(({ body }) => {
-                assert.deepEqual(body, [lightWeight, backpack]);
+                assert.deepEqual(body, [
+                    {
+                        __v: body[0].__v,
+                        _id: body[0]._id,
+                        name: lightWeight.name,
+                        backpack: {
+                            _id: kumo._id,
+                            name: kumo.name,
+                            weight: kumo.weight
+                        },
+                        gear: [{
+                            _id: r1._id,
+                            name: r1.name,
+                            weight: r1.weight
+                        }]
+                    }, 
+                    {
+                        __v: body[1].__v,
+                        _id: body[1]._id,
+                        name: backpack.name,
+                        backpack: {
+                            _id: aura._id,
+                            name: aura.name,
+                            weight: aura.weight
+                        },
+                        gear: [{
+                            _id: aura._id,
+                            name: aura.name,
+                            weight: aura.weight
+                        },
+                        {
+                            _id: r1._id,
+                            name: r1.name,
+                            weight: r1.weight
+                        }]
+                    }
+                ]);
             });
     });
 
