@@ -1,5 +1,5 @@
 const { join } = require('path');
 
-export default file => (req, res) => {
+module.exports = file => (req, res) => {
     res.sendFile(join(__dirname, '../..', file));
 };
