@@ -1,7 +1,8 @@
 import React from 'react';
 
-export const withList = (Component, options = {}) => {
+export const withList = (Component) => {
   return function List(props) {
-    return <div></div>;
+    const { list } = props;
+    return <div>{list.map((item, i) => <Component key={item._id || i} {...item}/>)}</div>;
   };
 };
