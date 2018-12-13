@@ -8,15 +8,20 @@ export const withFetch = Component => {
     };
 
     state = {
-
+      data: null
     };
 
     componentDidMount() {
+      const promise = this.props.fetch();
+      if(!promise || typeof promise.then !== 'function') return;
 
+      promise
+        .then(data => this.setState({ data }));
     }
 
     render() {
-      return <Component {...this.props}/>;
+      const props = { ...this.props, data: this.state.data };
+      return <Component {...props}/>;
     }
   };
 };
