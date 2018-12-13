@@ -4,7 +4,7 @@ export default function Gear({ name }) {
 
   return (
     <div>
-      <h2>{name}</h2>
+      <h3>{name}</h3>
     </div>
   );
 }
