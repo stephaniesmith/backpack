@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
 import GearList from './containers/gear/GearList';
 import BackpackList from './containers/backpacks/BackpackList';
+import BackpackDetail from './containers/backpacks/BackpackDetail';
 
 export const ROUTES = {
   HOME: {
@@ -19,6 +20,11 @@ export const ROUTES = {
     path: '/backpacks',
     Component: BackpackList,
     linkTo: () => '/backpacks'
+  },
+  BACKPACK: {
+    path: '/backpacks/:id',
+    Component: BackpackDetail,
+    linkTo: id => `/backpacks/${id}`
   }
 };
 

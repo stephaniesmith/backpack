@@ -12,4 +12,8 @@ module.exports = router
 
     .get('/', respond(
         ({ query }) => Backpack.findByQuery(query)
+    ))
+
+    .get('/:id', respond(
+        ({ id }) => Backpack.getDetailById(id)
     ));

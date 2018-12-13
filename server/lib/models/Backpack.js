@@ -28,6 +28,18 @@ schema.statics = {
                 select: 'name weight'
             })
             .lean();
+    },
+    getDetailById(id) {
+        return this.findById(id)
+            .populate({
+                path: 'backpack',
+                select: 'name weight'
+            })
+            .populate({
+                path: 'gear',
+                select: 'name weight'
+            })
+            .lean();
     }
 };
 
