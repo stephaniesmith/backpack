@@ -8,8 +8,11 @@ const mapStateToProps = state => ({
   detail: getBackpack(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetch: () => dispatch(fetchBackpack())
+const mapDispatchToProps = (dispatch, props) => ({
+  fetch: () => {
+    const { id } = props.match.params;
+    dispatch(fetchBackpack(id));
+  }
 });
 
 export default connect(

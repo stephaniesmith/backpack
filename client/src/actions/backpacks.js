@@ -12,9 +12,9 @@ export const fetchBackpacks = () => ({
   payload: getBackpacks()
 });
 
-export const fetchBackpack = () => ({
+export const fetchBackpack = id => ({
   type: FETCH_BACKPACK,
   loadStart: FETCH_BACKPACK_LOADING,
   loadEnd: FETCH_BACKPACK_DONE,
-  payload: getBackpack()
+  payload: getBackpack(id)
 });
