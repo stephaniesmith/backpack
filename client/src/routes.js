@@ -22,9 +22,9 @@ export const ROUTES = {
     linkTo: () => '/backpacks'
   },
   BACKPACK: {
-    path: '/backpack',
+    path: '/backpacks/:id',
     Component: BackpackDetail,
-    linkTo: () => '/backpack'
+    linkTo: id => `/backpack/${id}`
   }
 };
 
