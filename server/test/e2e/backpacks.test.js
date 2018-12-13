@@ -136,5 +136,27 @@ describe.only('Gear E2E API', () => {
             });
     });
 
+    it('gets backpack by id', () => {
+        return request.get(`/api/backpacks/${lightWeight._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, 
+                    {
+                        __v: 0,
+                        _id: lightWeight._id,
+                        name: lightWeight.name,
+                        backpack: {
+                            _id: kumo._id,
+                            name: kumo.name,
+                            weight: kumo.weight
+                        },
+                        gear: [{
+                            _id: r1._id,
+                            name: r1.name,
+                            weight: r1.weight
+                        }]
+                    });
+            });
+    });
+
 
 });
