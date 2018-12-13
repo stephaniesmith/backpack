@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../routes';
 
 export default function Backpack({ name }) {
 
   return (
     <div>
-      <h2>{name}</h2>
+      <Link to={ROUTES.BACKPACK.linkTo()}>{name}</Link>
     </div>
   );
 }
