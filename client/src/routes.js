@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import Home from './components/home/Home';
 import GearList from './containers/gear/GearList';
 import BackpackList from './containers/backpacks/BackpackList';
-import BackpackDetail from './components/backpacks/BackpackDetail';
+import BackpackDetail from './containers/backpacks/BackpackDetail';
 
 export const ROUTES = {
   HOME: {
