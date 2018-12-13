@@ -24,7 +24,7 @@ export const ROUTES = {
   BACKPACK: {
     path: '/backpacks/:id',
     Component: BackpackDetail,
-    linkTo: id => `/backpack/${id}`
+    linkTo: id => `/backpacks/${id}`
   }
 };
 
