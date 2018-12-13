@@ -2,10 +2,11 @@ import reducer from './backpacks';
 import { FETCH_BACKPACKS } from '../actions/backpacks';
 
 
-describe('gear reducer', () => {
+describe('backpack reducer', () => {
   const initialState = {
     loading: false,
-    list: []
+    list: [],
+    detail: null
   };
 
   const backpacks = [
