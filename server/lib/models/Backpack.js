@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { RequiredString } = require('../util/mongoose-helpers');
+const { weighGear } = require('./aggregations');
 
 const schema = new Schema({
     name: RequiredString,
@@ -40,6 +41,9 @@ schema.statics = {
                 select: 'name weight'
             })
             .lean();
+    },
+    gearWeight(id) {
+        return this.aggregate(weighGear(id));
     }
 };
 
