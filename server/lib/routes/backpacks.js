@@ -15,5 +15,12 @@ module.exports = router
     ))
 
     .get('/:id', respond(
-        ({ id }) => Backpack.getDetailById(id)
+        ({ id }) => {
+            return Backpack.getDetailById(id)
+                .then(backpack => [backpack, Backpack.gearWeight(id)])
+                .then(([backpack, weight]) => {
+                    backpack.weight = weight;
+                    return backpack;
+                });
+        }
     ));
