@@ -15,5 +15,9 @@ module.exports = router
     ))
 
     .get('/:id', respond(
-        ({ id }) => Backpack.getDetailById(id)
+        ({ id }) => Promise.all([Backpack.getDetailById(id), Backpack.gearWeight(id)])
+            .then(([load, weight]) => {
+                load.weight = Math.ceil((weight + load.backpack.weight) * 100) / 100;
+                return load;
+            })
     ));

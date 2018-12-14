@@ -144,6 +144,7 @@ describe.only('Gear E2E API', () => {
                         __v: 0,
                         _id: lightWeight._id,
                         name: lightWeight.name,
+                        weight: 28.37,
                         backpack: {
                             _id: kumo._id,
                             name: kumo.name,
