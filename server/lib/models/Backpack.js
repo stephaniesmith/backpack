@@ -43,7 +43,8 @@ schema.statics = {
             .lean();
     },
     gearWeight(id) {
-        return this.aggregate(weighGear(id));
+        return this.aggregate(weighGear(id))
+            .then(results => results[0].weight);
     }
 };
 
